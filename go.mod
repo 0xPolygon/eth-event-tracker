@@ -3,11 +3,8 @@ module github.com/0xPolygon/eth-event-tracker
 go 1.19
 
 require (
-	github.com/jmoiron/sqlx v1.3.5
-	github.com/lib/pq v1.10.7
-	github.com/ory/dockertest v3.3.5+incompatible
 	github.com/stretchr/testify v1.8.1
-	github.com/umbracle/ethgo v0.1.3
+	github.com/umbracle/ethgo v0.1.4-0.20221114131613-66b6282af18c
 	go.etcd.io/bbolt v1.3.6
 )
 
@@ -26,10 +23,12 @@ require (
 	github.com/klauspost/cpuid v1.2.0 // indirect
 	github.com/konsorten/go-windows-terminal-sequences v1.0.1 // indirect
 	github.com/kr/text v0.2.0 // indirect
+	github.com/lib/pq v1.10.7 // indirect
 	github.com/mitchellh/mapstructure v1.1.2 // indirect
 	github.com/opencontainers/go-digest v1.0.0-rc1 // indirect
 	github.com/opencontainers/image-spec v1.0.1 // indirect
 	github.com/opencontainers/runc v0.1.1 // indirect
+	github.com/ory/dockertest v3.3.5+incompatible // indirect
 	github.com/pkg/errors v0.8.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/sirupsen/logrus v1.4.2 // indirect
