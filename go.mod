@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	github.com/stretchr/testify v1.8.1
-	github.com/umbracle/ethgo v0.1.4-0.20221114131613-66b6282af18c
+	github.com/umbracle/ethgo v0.1.4-0.20230206183019-c54938f51df3
 	go.etcd.io/bbolt v1.3.6
 )
 

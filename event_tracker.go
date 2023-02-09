@@ -9,8 +9,8 @@ import (
 	"strings"
 	"time"
 
+	"github.com/0xPolygon/eth-event-tracker/blocktracker"
 	"github.com/umbracle/ethgo"
-	blocktracker "github.com/umbracle/ethgo/block_tracker"
 	"github.com/umbracle/ethgo/etherscan"
 	"github.com/umbracle/ethgo/jsonrpc/codec"
 )
