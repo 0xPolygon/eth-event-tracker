@@ -8,11 +8,11 @@ import (
 	"testing"
 	"time"
 
+	"github.com/0xPolygon/eth-event-tracker/blocktracker"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"github.com/umbracle/ethgo"
 	"github.com/umbracle/ethgo/abi"
-	blocktracker "github.com/umbracle/ethgo/block_tracker"
 	"github.com/umbracle/ethgo/jsonrpc"
 	"github.com/umbracle/ethgo/jsonrpc/codec"
 	"github.com/umbracle/ethgo/testutil"
@@ -39,8 +39,8 @@ func testFilter(t *testing.T, provider Provider, filterConfig *FilterConfig) []*
 }
 
 func TestFilterIntegration_Address(t *testing.T) {
-	s := testutil.NewTestServer(t, nil)
-	defer s.Close()
+	s := testutil.NewTestServer(t)
+	// defer s.Close()
 
 	client, _ := jsonrpc.NewClient(s.HTTPAddr())
 
@@ -48,8 +48,11 @@ func TestFilterIntegration_Address(t *testing.T) {
 	c0.AddEvent(testutil.NewEvent("A").Add("uint256", true).Add("uint256", true))
 	c0.EmitEvent("setA1", "A", "1", "2")
 
-	_, addr0 := s.DeployContract(c0)
-	_, addr1 := s.DeployContract(c0)
+	_, addr0, err := s.DeployContract(c0)
+	require.NoError(t, err)
+
+	_, addr1, err := s.DeployContract(c0)
+	require.NoError(t, err)
 
 	for i := 0; i < 20; i++ {
 		if i%2 == 0 {
@@ -82,8 +85,8 @@ func TestFilterIntegration_Address(t *testing.T) {
 }
 
 func TestFilterIntegration_EventTopic(t *testing.T) {
-	s := testutil.NewTestServer(t, nil)
-	defer s.Close()
+	s := testutil.NewTestServer(t)
+	// defer s.Close()
 
 	client, _ := jsonrpc.NewClient(s.HTTPAddr())
 
@@ -95,8 +98,11 @@ func TestFilterIntegration_EventTopic(t *testing.T) {
 	c1.AddEvent(testutil.NewEvent("B").Add("uint256", true).Add("uint256", true))
 	c1.EmitEvent("setB1", "B", "1", "2")
 
-	artifacts0, addr0 := s.DeployContract(c0)
-	_, addr1 := s.DeployContract(c0)
+	artifacts0, addr0, err := s.DeployContract(c0)
+	require.NoError(t, err)
+
+	_, addr1, err := s.DeployContract(c0)
+	require.NoError(t, err)
 
 	abi0, _ := abi.NewABI(artifacts0.Abi)
 
